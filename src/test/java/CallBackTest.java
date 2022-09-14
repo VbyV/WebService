@@ -89,6 +89,14 @@ public class CallBackTest {
     String text = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText();
     Assertions.assertEquals("Поле обязательно для заполнения" , text.trim());
 }
+@Test
+    void notCheckBox() {
+    driver.findElement(By.cssSelector("[type=\"text\"]")).sendKeys("Иванов Илья");
+    driver.findElement(By.cssSelector("[type=\"tel\"]")).sendKeys("+79099999990");
+    driver.findElement(By.cssSelector(".button__text")).click();
+    String text = driver.findElement(By.cssSelector("[data-test-id=agreement]")).getText();
+    Assertions.assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй" , text.trim());
+}
 
 }
 
